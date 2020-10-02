@@ -14,17 +14,17 @@ CLIENT_SECRET = '7c41e408-104e-49af-ba26-5ab71d95bb20'
 REDIRECT_URI = "https://bankapitest.herokuapp.com/reddit_callback/"
 
 
-def user_agent():
-    '''reddit API clients should each have their own, unique user-agent
-    Ideally, with contact info included.
-    
-    e.g.,
-    return "oauth2-sample-app by /u/%s" % your_reddit_username
-    '''
-    raise NotImplementedError()
+#def user_agent():
+#    '''reddit API clients should each have their own, unique user-agent
+#    Ideally, with contact info included.
+#    
+#    e.g.,
+#    return "oauth2-sample-app by /u/%s" % your_reddit_username
+#    '''
+#    raise NotImplementedError()
 
-def base_headers():
-    return {"User-Agent": user_agent()}
+#def base_headers():
+#    return {"User-Agent": user_agent()}
 
 
 #app = Flask(__name__)
@@ -42,7 +42,7 @@ def make_authorization_url():
               "response_type": "code",
               "state": "0399",
               "scope": "Read"}
-    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=http://localhost:8050/reddit_callback/'
+    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=https://bankapitest.herokuapp.com/reddit_callback/'
     return url
 
 make_authorization_url()
@@ -54,9 +54,9 @@ app.layout = html.Div([
 
 
 #@app.route('/')
-def homepage():
-    text = '<a href="%s">Authenticate with DBS</a>'
-    return text % make_authorization_url()
+#def homepage():
+#    text = '<a href="%s">Authenticate with DBS</a>'
+#    return text % make_authorization_url()
 
 
 
@@ -64,46 +64,46 @@ def homepage():
 
 # Left as an exercise to the reader.
 # You may want to store valid states in a database or memcache.
-def save_created_state(state):
-    pass
-def is_valid_state(state):
-    return True
+#def save_created_state(state):
+#    pass
+#def is_valid_state(state):
+#    return True
 
-@app.route('/reddit_callback')
-def reddit_callback():
-    error = request.args.get('error', '')
-    if error:
-        return "Error: " + error
-    state = request.args.get('state', '')
-    if not is_valid_state(state):
-        # Uh-oh, this request wasn't started by us!
-        abort(403)
-    code = request.args.get('code')
-    access_token = get_token(code)
+#@app.route('/reddit_callback')
+#def reddit_callback():
+#    error = request.args.get('error', '')
+#    if error:
+#        return "Error: " + error
+#    state = request.args.get('state', '')
+#    if not is_valid_state(state):
+#        # Uh-oh, this request wasn't started by us!
+#        abort(403)
+#    code = request.args.get('code')
+#    access_token = get_token(code)
     # Note: In most cases, you'll want to store the access token, in, say,
     # a session for use in other parts of your web app.
-    return "Your reddit username is: %s" % get_username(access_token)
+#    return "Your reddit username is: %s" % get_username(access_token)
 
-def get_token(code):
-    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
-    post_data = {"grant_type": "authorization_code",
-                 "code": code,
-                 "redirect_uri": REDIRECT_URI}
-    headers = base_headers()
-    response = requests.post("https://ssl.reddit.com/api/v1/access_token",
-                             auth=client_auth,
-                             headers=headers,
-                             data=post_data)
-    token_json = response.json()
-    return token_json["access_token"]
+#def get_token(code):
+#    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
+#    post_data = {"grant_type": "authorization_code",
+#                 "code": code,
+#                 "redirect_uri": REDIRECT_URI}
+#    headers = base_headers()
+#    response = requests.post("https://ssl.reddit.com/api/v1/access_token",
+#                             auth=client_auth,
+#                             headers=headers,
+#                             data=post_data)
+#    token_json = response.json()
+#    return token_json["access_token"]
     
     
-def get_username(access_token):
-    headers = base_headers()
-    headers.update({"Authorization": "bearer " + access_token})
-    response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
-    me_json = response.json()
-    return me_json['name']
+#def get_username(access_token):
+#    headers = base_headers()
+#    headers.update({"Authorization": "bearer " + access_token})
+#    response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
+#    me_json = response.json()
+#    return me_json['name']
 
 
 if __name__ == '__main__':
