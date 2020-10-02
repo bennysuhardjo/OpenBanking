@@ -49,7 +49,12 @@ make_authorization_url()
 
 ########### Set up the layout
 app.layout = html.Div([
-    html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank")
+    html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank"),
+    html.Table([
+                html.Tr([html.Td(['']), html.Td(id='news1')])
+        
+
+            ])
 ])
 
 
@@ -70,7 +75,8 @@ app.layout = html.Div([
 #    return True
 
 @app.callback(
-
+    [Output('news1', 'children')
+    ]
 )
 
 def reddit_callback():
@@ -99,7 +105,12 @@ def get_token(code):
                              data=post_data)
     token_json = response.json()
     return token_json["access_token"]
-    
+
+
+def update_output_div(n_clicks, stock_tick):
+    return reddit_callback()
+
+
 #def get_username(access_token):
 #    headers = base_headers()
 #    headers.update({"Authorization": "bearer " + access_token})
