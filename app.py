@@ -87,7 +87,7 @@ def update_output_div():
         # Uh-oh, this request wasn't started by us!
         abort(403)
     code = request.args.get('code')
-    access_token = get_token(code)
+#    access_token = get_token(code)
     # Note: In most cases, you'll want to store the access token, in, say,
     # a session for use in other parts of your web app.
     return "Your reddit username is: " 
