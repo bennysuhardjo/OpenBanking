@@ -11,7 +11,7 @@ import requests.auth
 import urllib
 CLIENT_ID = 'c205ebf1-c7d7-4bf5-bc18-1af048aafa8f'
 CLIENT_SECRET = '7c41e408-104e-49af-ba26-5ab71d95bb20'
-REDIRECT_URI = "https://bankapitest.herokuapp.com/reddit_callback/"
+REDIRECT_URI = "https://bankapitest.herokuapp.com/"
 
 
 #def user_agent():
@@ -42,7 +42,7 @@ def make_authorization_url():
               "response_type": "code",
               "state": "0399",
               "scope": "Read"}
-    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=https://bankapitest.herokuapp.com/reddit_callback/'
+    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=' + REDIRECT_URI
     return url
 
 make_authorization_url()
