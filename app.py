@@ -79,7 +79,7 @@ app.layout = html.Div([
     ]
 )
 
-def reddit_callback():
+def update_output_div():
     error = request.args.get('error', '')
     if error:
         return "Error: " + error
@@ -107,8 +107,6 @@ def get_token(code):
     return token_json["access_token"]
 
 
-def update_output_div(n_clicks, stock_tick):
-    return reddit_callback()
 
 
 #def get_username(access_token):
