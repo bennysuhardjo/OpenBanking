@@ -69,7 +69,7 @@ app.layout = html.Div([
 #def is_valid_state(state):
 #    return True
 
-@app.route('/reddit_callback')
+@app.callback(
 def reddit_callback():
     error = request.args.get('error', '')
     if error:
@@ -82,21 +82,21 @@ def reddit_callback():
     access_token = get_token(code)
     # Note: In most cases, you'll want to store the access token, in, say,
     # a session for use in other parts of your web app.
-    return "Your reddit username is: %s" % get_username(access_token)
+    return "Your reddit username is: " 
 
-#def get_token(code):
-#    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
-#    post_data = {"grant_type": "authorization_code",
-#                 "code": code,
-#                 "redirect_uri": REDIRECT_URI}
-#    headers = base_headers()
-#    response = requests.post("https://ssl.reddit.com/api/v1/access_token",
-#                             auth=client_auth,
-#                             headers=headers,
-#                             data=post_data)
-#    token_json = response.json()
-#    return token_json["access_token"]
-    
+def get_token(code):
+    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
+    post_data = {"grant_type": "authorization_code",
+                 "code": code,
+                 "redirect_uri": REDIRECT_URI}
+    headers = base_headers()
+    response = requests.post("https://www.dbs.com/sandbox/api/sg/v1/oauth/tokens",
+                             auth=client_auth,
+                             headers=headers,
+                             data=post_data)
+    token_json = response.json()
+    return token_json["access_token"]
+)
     
 #def get_username(access_token):
 #    headers = base_headers()
