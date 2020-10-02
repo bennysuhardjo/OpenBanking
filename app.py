@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import dash_bootstrap_components as dbc
+
 from flask import Flask, abort, request
 from uuid import uuid4
 import requests
@@ -6,7 +11,7 @@ import requests.auth
 import urllib
 CLIENT_ID = 'c205ebf1-c7d7-4bf5-bc18-1af048aafa8f'
 CLIENT_SECRET = '7c41e408-104e-49af-ba26-5ab71d95bb20'
-REDIRECT_URI = "http://127.0.0.1:8050/reddit_callback/"
+REDIRECT_URI = "https://bankapitest.herokuapp.com/reddit_callback/"
 
 
 def user_agent():
@@ -22,13 +27,11 @@ def base_headers():
     return {"User-Agent": user_agent()}
 
 
-app = Flask(__name__)
-server = app.server
-@app.route('/')
-def homepage():
-    text = '<a href="%s">Authenticate with DBS</a>'
-    return text % make_authorization_url()
+#app = Flask(__name__)
 
+external_stylesheets = [dbc.themes.BOOTSTRAP]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 def make_authorization_url():
     # Generate a random string for the state parameter
@@ -41,6 +44,22 @@ def make_authorization_url():
               "scope": "Read"}
     url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=http://localhost:8050/reddit_callback/'
     return url
+
+make_authorization_url()
+
+########### Set up the layout
+app.layout = html.Div([
+    html.Label('Open Banking Test')  
+])
+
+
+#@app.route('/')
+def homepage():
+    text = '<a href="%s">Authenticate with DBS</a>'
+    return text % make_authorization_url()
+
+
+
 
 
 # Left as an exercise to the reader.
