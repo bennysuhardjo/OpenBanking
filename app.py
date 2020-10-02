@@ -105,7 +105,7 @@ def get_token(code):
     token_json = response.json()
     return token_json["access_token"]
 
-
+update_output_div()
 
 
 #def get_username(access_token):
