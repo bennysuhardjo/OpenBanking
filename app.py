@@ -42,7 +42,7 @@ def make_authorization_url():
               "response_type": "code",
               "state": "0399",
               "scope": "Read"}
-    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=' + REDIRECT_URI
+    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=https://bankapitest.herokuapp.com/'
     return url
 
 make_authorization_url()
