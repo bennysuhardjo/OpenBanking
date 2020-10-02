@@ -49,7 +49,9 @@ make_authorization_url()
 
 ########### Set up the layout
 app.layout = html.Div([
-    html.Label('Open Banking Test') 
+    text = '<a href="%s">Open Banking (DBS)</a>'
+    html.Label(text % make_authorization_url()) 
+    
 ])
 
 
