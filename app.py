@@ -87,4 +87,4 @@ def get_username(access_token):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run_server()
