@@ -36,8 +36,8 @@ server = app.server
 def make_authorization_url():
     # Generate a random string for the state parameter
     # Save it for use later to prevent xsrf attacks
-    state = str(uuid4())
-    save_created_state(state)
+    #state = str(uuid4())
+    #save_created_state(state)
     params = {"client_id": CLIENT_ID,
               "response_type": "code",
               "state": "0399",
