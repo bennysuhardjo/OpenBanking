@@ -23,6 +23,7 @@ def base_headers():
 
 
 app = Flask(__name__)
+server = app.server
 @app.route('/')
 def homepage():
     text = '<a href="%s">Authenticate with DBS</a>'
