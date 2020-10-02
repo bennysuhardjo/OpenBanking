@@ -70,6 +70,9 @@ app.layout = html.Div([
 #    return True
 
 @app.callback(
+
+)
+
 def reddit_callback():
     error = request.args.get('error', '')
     if error:
@@ -96,7 +99,6 @@ def get_token(code):
                              data=post_data)
     token_json = response.json()
     return token_json["access_token"]
-)
     
 #def get_username(access_token):
 #    headers = base_headers()
