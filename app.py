@@ -75,8 +75,7 @@ app.layout = html.Div([
 #    return True
 
 @app.callback(
-    [Output('news1', 'children')
-    ]
+
 )
 
 def update_output_div():
