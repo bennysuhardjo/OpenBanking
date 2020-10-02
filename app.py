@@ -49,7 +49,7 @@ make_authorization_url()
 
 ########### Set up the layout
 app.layout = html.Div([
-    html.Label('Open Banking Test')  
+    html.Label('Open Banking Test') 
 ])
 
 
@@ -69,20 +69,20 @@ app.layout = html.Div([
 #def is_valid_state(state):
 #    return True
 
-#@app.route('/reddit_callback')
-#def reddit_callback():
-#    error = request.args.get('error', '')
-#    if error:
-#        return "Error: " + error
-#    state = request.args.get('state', '')
-#    if not is_valid_state(state):
-#        # Uh-oh, this request wasn't started by us!
-#        abort(403)
-#    code = request.args.get('code')
-#    access_token = get_token(code)
+@app.route('/reddit_callback')
+def reddit_callback():
+    error = request.args.get('error', '')
+    if error:
+        return "Error: " + error
+    state = request.args.get('state', '')
+    if not is_valid_state(state):
+        # Uh-oh, this request wasn't started by us!
+        abort(403)
+    code = request.args.get('code')
+    access_token = get_token(code)
     # Note: In most cases, you'll want to store the access token, in, say,
     # a session for use in other parts of your web app.
-#    return "Your reddit username is: %s" % get_username(access_token)
+    return "Your reddit username is: %s" % get_username(access_token)
 
 #def get_token(code):
 #    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
