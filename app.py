@@ -50,11 +50,11 @@ make_authorization_url()
 ########### Set up the layout
 app.layout = html.Div([
     html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank"),
-    html.Table([
-                html.Tr([html.Td(['']), html.Td(id='news1')])
+#    html.Table([
+#                html.Tr([html.Td(['']), html.Td(id='news1')])
         
 
-            ])
+#            ])
 ])
 
 
