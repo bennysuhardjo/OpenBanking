@@ -91,7 +91,7 @@ def display_page(pathname):
     payload = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
 
     headers = {
-        'authorization': "Basic NDUzOTA0ZDYtMTQ3Zi00MWI3LWFkYzAtNzYyOTljMDI1MzIzOmEwNjU2MjY0LWQyYzYtNGIxNy1iNjMxLTc2NmIwZGY2NzVmNg==",
+        'authorization': "Basic c205ebf1-c7d7-4bf5-bc18-1af048aafa8f:7c41e408-104e-49af-ba26-5ab71d95bb20",
         'content-type': "application/x-www-form-urlencoded",
         'cache-control': "no-cache"
     }
