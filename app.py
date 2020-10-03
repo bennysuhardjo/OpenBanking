@@ -98,9 +98,24 @@ def display_page(pathname):
 
     response = requests.request("POST", url, data=payload, headers=headers)
     
+    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + respose['partyId'] + "}/cards"
+
+    payloadcredit = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
+
+    headerscredit = {
+        'clientId': "c205ebf1-c7d7-4bf5-bc18-1af048aafa8f",
+        'accessToken': response['access_token'],
+        'uuid': "no-cache"
+        
+    }
+
+    responsecredit = requests.request("GET", urlcredit, data=payloadcredit, headers=headerscredit)
+    
+    
     return html.Div([
         html.H3('Authorisation Code: {}'.format(vars[1])),
-        html.H3('Token: {}'.format(response.text))
+        html.H3('Token: {}'.format(response.text)),
+        html.H3('Credit Card Summary: {}'.format(responsecredit.text))
     ])
 
 #def update_output_div():
