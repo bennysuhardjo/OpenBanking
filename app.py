@@ -49,12 +49,16 @@ def make_authorization_url():
 
 ########### Set up the layout
 app.layout = html.Div([
-    html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank")
+    dcc.Location(id='url', refresh=False),    
+    
+#    html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank")
 #    html.Table([
 #                html.Tr([html.Td(['']), html.Td(id='news1')])
 #        
 #
 #            ])
+    
+    html.Div(id='page-content')
 ])
 
 
@@ -74,9 +78,14 @@ app.layout = html.Div([
 #def is_valid_state(state):
 #    return True
 
-#@app.callback(
-#    [Output('news1', 'children')]
-#)
+@app.callback(
+               dash.dependencies.Output('page-content', 'children'),
+              [dash.dependencies.Input('url', 'pathname')]
+)
+def display_page(pathname):
+    return html.Div([
+        html.H3('You are on page {}'.format(pathname))
+    ])
 
 #def update_output_div():
 #    error = request.args.get('error', '')
