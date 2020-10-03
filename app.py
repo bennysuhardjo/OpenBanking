@@ -98,13 +98,13 @@ def display_page(pathname):
 
     response = requests.request("POST", url, data=payload, headers=headers)
     
-    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response['partyId'] + "}/cards"
+    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response.text['partyId'] + "}/cards"
 
     payloadcredit = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
 
     headerscredit = {
         'clientId': "c205ebf1-c7d7-4bf5-bc18-1af048aafa8f",
-        'accessToken': response['access_token'],
+        'accessToken': response.text['access_token'],
         'uuid': "no-cache"
         
     }
