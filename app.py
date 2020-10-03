@@ -80,11 +80,13 @@ app.layout = html.Div([
 
 @app.callback(
                dash.dependencies.Output('page-content', 'children'),
-              [dash.dependencies.Input('url', 'href')]
+              [dash.dependencies.Input('url', 'search')]
 )
 def display_page(pathname):
+    
+    vars = pathname.split(',')
     return html.Div([
-        html.H3('You are on page {}'.format(pathname))
+        html.H3('You are on page {}'.format(vars))
     ])
 
 #def update_output_div():
