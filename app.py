@@ -78,34 +78,34 @@ app.layout = html.Div([
     [Output('news1', 'children')]
 )
 
-def update_output_div():
-    error = request.args.get('error', '')
-    if error:
-        return "Error: " + error
-    state = request.args.get('state', '')
-    if not is_valid_state(state):
+#def update_output_div():
+#    error = request.args.get('error', '')
+#    if error:
+#        return "Error: " + error
+#    state = request.args.get('state', '')
+#    if not is_valid_state(state):
         # Uh-oh, this request wasn't started by us!
-        abort(403)
-    code = request.args.get('code')
+#        abort(403)
+#    code = request.args.get('code')
 #    access_token = get_token(code)
     # Note: In most cases, you'll want to store the access token, in, say,
     # a session for use in other parts of your web app.
-    return "Your reddit username is: " 
+#    return "Your reddit username is: " 
 
-def get_token(code):
-    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
-    post_data = {"grant_type": "authorization_code",
-                 "code": code,
-                 "redirect_uri": REDIRECT_URI}
-    headers = base_headers()
-    response = requests.post("https://www.dbs.com/sandbox/api/sg/v1/oauth/tokens",
-                             auth=client_auth,
-                             headers=headers,
-                             data=post_data)
-    token_json = response.json()
-    return token_json["access_token"]
+#def get_token(code):
+#    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
+#    post_data = {"grant_type": "authorization_code",
+#                 "code": code,
+#                 "redirect_uri": REDIRECT_URI}
+#    headers = base_headers()
+#    response = requests.post("https://www.dbs.com/sandbox/api/sg/v1/oauth/tokens",
+#                             auth=client_auth,
+#                             headers=headers,
+#                             data=post_data)
+#    token_json = response.json()
+#    return token_json["access_token"]
 
-update_output_div()
+#update_output_div()
 
 
 #def get_username(access_token):
