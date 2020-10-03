@@ -84,7 +84,7 @@ app.layout = html.Div([
 )
 def display_page(pathname):
     
-    vars = pathname.split('&').split('=')
+    vars = pathname.split('&')[0].split('&')
     return html.Div([
         html.H3('You are on page {}'.format(vars))
     ])
