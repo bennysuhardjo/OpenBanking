@@ -45,11 +45,11 @@ def make_authorization_url():
     url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/authorize?" + urllib.parse.urlencode(params) + '&redirect_uri=https://bankapitest.herokuapp.com/'
     return url
 
-make_authorization_url()
+#make_authorization_url()
 
 ########### Set up the layout
 app.layout = html.Div([
-    html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank"),
+    html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank")
 #    html.Table([
 #                html.Tr([html.Td(['']), html.Td(id='news1')])
         
@@ -75,7 +75,7 @@ app.layout = html.Div([
 #    return True
 
 @app.callback(
-    [Output('news1', 'children')]
+#    [Output('news1', 'children')]
 )
 
 #def update_output_div():
