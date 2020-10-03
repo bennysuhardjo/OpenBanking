@@ -52,8 +52,8 @@ app.layout = html.Div([
     html.A("Open Banking (DBS)", href=make_authorization_url(), target="_blank")
 #    html.Table([
 #                html.Tr([html.Td(['']), html.Td(id='news1')])
-        
-
+#        
+#
 #            ])
 ])
 
@@ -74,9 +74,9 @@ app.layout = html.Div([
 #def is_valid_state(state):
 #    return True
 
-@app.callback(
+#@app.callback(
 #    [Output('news1', 'children')]
-)
+#)
 
 #def update_output_div():
 #    error = request.args.get('error', '')
