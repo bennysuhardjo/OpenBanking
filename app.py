@@ -98,7 +98,7 @@ def display_page(pathname):
 
     response = requests.request("POST", url, data=payload, headers=headers)
     
-    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + respose['partyId'] + "}/cards"
+    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response['partyId'] + "}/cards"
 
     payloadcredit = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
 
