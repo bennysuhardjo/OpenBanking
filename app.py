@@ -109,8 +109,8 @@ def display_page(pathname):
         
     }
 
-    responsecredit = requests.request("GET", urlcredit, data=payloadcredit, headers=headerscredit)
-    
+    responsecredit = requests.request("GET", urlcredit,  headers=headerscredit)
+    # data=payloadcredit,
     
     return html.Div([
         html.H3('Authorisation Code: {}'.format(vars[1])),
