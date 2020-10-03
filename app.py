@@ -85,8 +85,22 @@ app.layout = html.Div([
 def display_page(pathname):
     
     vars = pathname.split('&')[0].split('=')
+    
+    url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/tokens"
+
+    payload = "code="+ vars +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
+
+    headers = {
+        'authorization': "Basic NDUzOTA0ZDYtMTQ3Zi00MWI3LWFkYzAtNzYyOTljMDI1MzIzOmEwNjU2MjY0LWQyYzYtNGIxNy1iNjMxLTc2NmIwZGY2NzVmNg==",
+        'content-type': "application/x-www-form-urlencoded",
+        'cache-control': "no-cache"
+    }
+
+    response = requests.request("POST", url, data=payload, headers=headers)
+    
     return html.Div([
-        html.H3('You are on page {}'.format(vars[1]))
+        html.H3('Authorisation Code:'.format(vars[1]))
+        html.H3('Token: '.format(response["party_id"]))
     ])
 
 #def update_output_div():
