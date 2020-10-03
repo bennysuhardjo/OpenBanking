@@ -99,7 +99,7 @@ def display_page(pathname):
     response = requests.request("POST", url, data=payload, headers=headers)
     
     return html.Div([
-        html.H3('Authorisation Code:'.format(vars[1]))
+        html.H3('Authorisation Code:'.format(vars[1])),
         html.H3('Token: '.format(response["party_id"]))
     ])
 
