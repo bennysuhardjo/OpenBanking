@@ -105,7 +105,7 @@ def display_page(pathname):
     headerscredit = {
         'clientId': "c205ebf1-c7d7-4bf5-bc18-1af048aafa8f",
         'accessToken': response.text.split(',')[0].split(':')[1].split('"')[1],
-        'uuid': "IW036"
+        'uuid': "71ad42fb-abd1-4242-b795-3ef29342fc42"
         
     }
 
