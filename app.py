@@ -109,8 +109,12 @@ def display_page(pathname):
         
     }
 
-    responsecredit = requests.request("GET", urlcredit,  data=payloadcredit, headers=headerscredit)
-    
+#    responsecredit = requests.request("GET", urlcredit,  data=payloadcredit, headers=headerscredit)
+    responsecredit = requests.get(urlcredit, 
+                                  params={'cursor': '1', 'amount': 0},
+                                  headers={'clientId': 'c205ebf1-c7d7-4bf5-bc18-1af048aafa8f',
+                                           'accessToken': response.text.split(',')[0].split(':')[1].split('"')[1],
+                                           'uuid': "b7ab8a39-1e22-4ddf-82c9-a2ec70052c9a"})
     
     return html.Div([
         html.H3('Authorisation Code: {}'.format(vars[1])),
