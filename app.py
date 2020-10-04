@@ -100,7 +100,7 @@ def display_page(pathname):
     
     urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response.text.split(',')[1].split(':')[1] + "}/deposits"
 
-    payloadcredit = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
+    payloadcredit = "cursor=1&amount=0"
 
     headerscredit = {
         'clientId': "c205ebf1-c7d7-4bf5-bc18-1af048aafa8f",
@@ -109,8 +109,8 @@ def display_page(pathname):
         
     }
 
-    responsecredit = requests.request("GET", urlcredit,  headers=headerscredit)
-    # data=payloadcredit,
+    responsecredit = requests.request("GET", urlcredit,  data=payloadcredit, headers=headerscredit)
+    
     
     return html.Div([
         html.H3('Authorisation Code: {}'.format(vars[1])),
