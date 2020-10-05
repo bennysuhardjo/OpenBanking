@@ -122,7 +122,8 @@ def display_page(pathname):
         html.H3('Authorisation Code: {}'.format(vars[1])),
         html.H3('Token: {}'.format(response.text)),
         html.H3('Access Token: {}'.format(response.text.split(',')[0].split(':')[1].split('"')[1])),
-        html.H3('Credit Card Summary: {}'.format(responsecredit.text))
+        html.H3('Credit Card Summary: {}'.format(responsecredit.text)),
+        html.H3('Party ID: {}'.format(response.text.split(',')[1].split(':')[1]))
     ])
 
 #def update_output_div():
