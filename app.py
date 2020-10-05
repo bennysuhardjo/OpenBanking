@@ -88,7 +88,7 @@ def display_page(pathname):
     
     url = "https://www.dbs.com/sandbox/api/sg/v1/oauth/tokens"
 
-    payload = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=code"
+    payload = "code="+ vars[1] +"&redirect_uri=https://bankapitest.herokuapp.com/&grant_type=token"
 
     headers = {
         'authorization': "Basic YzIwNWViZjEtYzdkNy00YmY1LWJjMTgtMWFmMDQ4YWFmYThmOjdjNDFlNDA4LTEwNGUtNDlhZi1iYTI2LTVhYjcxZDk1YmIyMA==",
