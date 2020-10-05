@@ -98,7 +98,7 @@ def display_page(pathname):
 
     response = requests.request("POST", url, data=payload, headers=headers)
     
-    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response.text.split(',')[1].split(':')[1] + "}/cards"
+    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response.text.split(',')[1].split(':')[1] + "}"
 
     payloadcredit = "cursor=1&amount=0"
 
@@ -111,10 +111,10 @@ def display_page(pathname):
 
 #    responsecredit = requests.request("GET", urlcredit,  data=payloadcredit, headers=headerscredit)
     responsecredit = requests.get(urlcredit, 
-                                  params={'cursor': '1', 'amount': 0},
+#                                  params={'cursor': '1', 'amount': 0},
                                   headers={'clientId': 'c205ebf1-c7d7-4bf5-bc18-1af048aafa8f',
                                            'accessToken': response.text.split(',')[0].split(':')[1].split('"')[1],
-                                           'uuid': "b7ab8a39-1e22-4ddf-82c9-a2ec70052c9a"})
+                                           'uuid': "IW036"})
     
     return html.Div([
         html.H3('Authorisation Code: {}'.format(vars[1])),
