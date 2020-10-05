@@ -115,7 +115,7 @@ def display_page(pathname):
                                   headers={'clientId': 'c205ebf1-c7d7-4bf5-bc18-1af048aafa8f',
                                            'accessToken': response.text.split(',')[0].split(':')[1].split('"')[1]
                                            ,
-                                           'accept': "application/json"
+                                           'uuid': ""
                                           })
     
     return html.Div([
