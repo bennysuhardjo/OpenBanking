@@ -98,7 +98,7 @@ def display_page(pathname):
 
     response = requests.request("POST", url, data=payload, headers=headers)
     
-    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response.text.split(',')[1].split(':')[1] + "}"
+    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/{" + response.text.split(',')[1].split(':')[1].split('"')[1] + "}"
 
     payloadcredit = "cursor=1&amount=0"
 
@@ -123,7 +123,7 @@ def display_page(pathname):
         html.H3('Token: {}'.format(response.text)),
         html.H3('Access Token: {}'.format(response.text.split(',')[0].split(':')[1].split('"')[1])),
         html.H3('Credit Card Summary: {}'.format(responsecredit.text)),
-        html.H3('Party ID: {}'.format(response.text.split(',')[1].split(':')[1]))
+        html.H3('Party ID: {}'.format(response.text.split(',')[1].split(':')[1].split('"')[1]))
     ])
 
 #def update_output_div():
