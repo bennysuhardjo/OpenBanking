@@ -98,7 +98,7 @@ def display_page(pathname):
 
     response = requests.request("POST", url, data=payload, headers=headers)
     
-    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/" + response.text.split(',')[1].split(':')[1].split('"')[1] + ""
+    urlcredit = "https://www.dbs.com/sandbox/api/sg/v1/parties/" + response.text.split(',')[1].split(':')[1].split('"')[1] + "/cards"
 
     payloadcredit = "cursor=1&amount=0"
 
